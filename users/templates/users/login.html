@@ -1,0 +1,25 @@
+{% extends "twitter/base.html" %}
+{% block content %}
+
+{% load bulma_tags %}
+
+<div class="columns">
+    <div class="column">
+    </div>
+    <div class="column">
+        <span class="is-size-3 has-text-weight-bold">Login</span>
+        <form method="POST">
+        {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form | bulma }}
+            </fieldset>
+            <div class="form-group">
+                <button class="button is-primary" type="submit">Login</button>
+            </div>
+        </form>
+        <a href="{% url 'register' %}">Don't have an account? Register.</a>
+    </div>
+    <div class="column">
+    </div>
+</div>
+{% endblock content %}
