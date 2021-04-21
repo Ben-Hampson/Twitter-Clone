@@ -13,11 +13,11 @@
             <fieldset class="form-group">
                 {{ form | bulma }}
             </fieldset>
-            <div class="form-group">
-                <button class="button is-primary" type="submit">Login</button>
+            <div class="form-group mt-3 mb-3">
+                <button class="button is-primary" type="submit"><strong>Log in</strong></button>
             </div>
         </form>
-        <a href="{% url 'register' %}">Don't have an account? Register.</a>
+        <a href="{% url 'register' %}">Don't have an account? <strong>Sign up.</strong></a>
     </div>
     <div class="column">
     </div>
