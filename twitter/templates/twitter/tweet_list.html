@@ -1,10 +1,22 @@
 {% extends "twitter/base.html" %}
 {% block content %}
 
+{% load bulma_tags %}
+
 <div class="columns">
     <div class="column">
     </div>
     <div class="column">
+        <!-- Tweet Box -->
+        {% if user.is_authenticated %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.message|bulma }}
+            <button class="button is-info mb-4" type="submit"><strong>Tweet</strong></button>
+        </form>
+        {% endif %}
+
+        <!-- Tweet Stream -->
         {% if messages %}
             {% for message in messages %}
                 <div>{{ message }}</div>
