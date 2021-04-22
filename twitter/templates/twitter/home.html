@@ -28,13 +28,14 @@
             <article class="media">
                 <figure class="media-left">
                 <p class="image is-64x64">
-                    <img src="https://bulma.io/images/placeholders/128x128.png">
+                    <a href="{% url 'public-profile' tweet.author.username %}"><img class="is-64x64 is-rounded" src="{{ tweet.author.profile.image.url }}"></a>
                 </p>
                 </figure>
                 <div class="media-content">
                 <div class="content">
                     <p>
-                        <a href="{% url 'public-profile' tweet.author.username %}"><strong>{{ tweet.author.username }}</strong></a>
+                        <a href="{% url 'public-profile' tweet.author.username %}">
+                        <strong>{{ tweet.author.profile.display_name }}</strong></a>
                         <small>@{{ tweet.author.username }}</small> <small>{{ tweet.date_created }}</small>
                     <br>
                         {{ tweet.message | hashtags | safe }}

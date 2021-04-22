@@ -1,16 +1,24 @@
 {% extends "twitter/base.html" %}
 {% block content %}
+{% load bulma_tags %}
+
 <div class="columns">
     <div class="column">
     </div>
     <div class="column">
-        <h2>{{ user.username }} Private Profile Page (settings, update public name, profile pic etc.)</h2>
+        <span class="is-size-3 has-text-weight-bold">Update Your Profile</span>
         <p><img class="image is-64x64" src="{{ user.profile.image.url }}"></p>
-        <p>{{ user.email }}</p>
-        <p>{{ user.profile.bio }}</p>
-        <p>{{ user.profile.location }}</p>
-        <p>{{ user.profile.website | urlize }}</p>
-        <p>{{ user.date_joined | date }}</p>
+                
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            <fieldset class="form-group">
+                {{ u_form | bulma }}
+                {{ p_form | bulma }}
+            </fieldset>
+            <div class="form-group mt-3">
+                <button class="button is-primary" type="submit">Update</button>
+            </div>
+        </form>
     </div>
     <div class="column">
     </div>

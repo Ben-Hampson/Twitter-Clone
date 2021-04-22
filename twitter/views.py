@@ -22,7 +22,7 @@ class TweetListView(ListView):
         form.instance.author = request.user
         if form.is_valid():
             form.save()
-        return redirect('tweet-detail')
+        return redirect('home')
 
 class TweetDetailView(DetailView):
     model = Tweet
