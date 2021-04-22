@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 # Create your views here.
 class TweetListView(ListView):
     model = Tweet
-    template_name = 'twitter/tweet_list.html'
+    template_name = 'twitter/home.html'
     context_object_name = 'tweets'
     ordering = '-date_created'
 
@@ -30,7 +30,7 @@ class TweetDetailView(DetailView):
 
 class UserTweetListView(ListView):
     model = Tweet
-    template_name = 'twitter/user_tweets.html'
+    template_name = 'twitter/public_profile.html'
     context_object_name = 'tweets'
 
     def get_queryset(self):
