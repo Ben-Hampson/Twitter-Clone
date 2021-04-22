@@ -5,6 +5,12 @@
     </div>
     <div class="column">
         <h2>{{ user.username }} Private Profile Page (settings, update public name, profile pic etc.)</h2>
+        <p><img class="image is-64x64" src="{{ user.profile.image.url }}"></p>
+        <p>{{ user.email }}</p>
+        <p>{{ user.profile.bio }}</p>
+        <p>{{ user.profile.location }}</p>
+        <p>{{ user.profile.website | urlize }}</p>
+        <p>{{ user.date_joined | date }}</p>
     </div>
     <div class="column">
     </div>
