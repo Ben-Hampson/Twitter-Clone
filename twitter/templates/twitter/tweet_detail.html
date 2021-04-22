@@ -1,6 +1,8 @@
 {% extends "twitter/base.html" %}
 {% block content %}
 
+{% load hashtags %}
+
 <div class="columns">
     <div class="column">
     </div>
@@ -23,7 +25,7 @@
                     <a href="{% url 'public-profile' tweet.author.username %}"><strong>{{ tweet.author.username }}</strong></a> 
                     <small>@{{ tweet.author.username }}</small> <small>{{ tweet.date_created }}</small>
                 <br>
-                    {{ tweet.message }}
+                    {{ tweet.message | hashtags | safe }}
                 </p>
             </div>
             <nav class="level is-mobile">

@@ -28,4 +28,5 @@ urlpatterns = [
     path('profile/', user_views.profile, name='private-profile'),
     path('tweet/<int:pk>/', twitter_views.TweetDetailView.as_view(), name='tweet-detail'),
     path('<str:username>/', twitter_views.UserTweetListView.as_view(), name='public-profile'),
+    path('hashtag/<str:hashtag>/', twitter_views.HashtagListView.as_view(), name='hashtag'),
 ]

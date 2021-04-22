@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
 from django.views.generic import ListView, DetailView
 from .models import Tweet
@@ -36,3 +36,11 @@ class UserTweetListView(ListView):
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Tweet.objects.filter(author=user).order_by('-date_created')
+
+class HashtagListView(ListView):
+    model = Tweet
+    template_name = 'twitter/public_profile.html'
+    context_object_name = 'tweets'
+
+    def get_queryset(self):
+        return get_list_or_404(Tweet, message__icontains=f"#{self.kwargs.get('hashtag')}")
