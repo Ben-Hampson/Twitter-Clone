@@ -73,9 +73,29 @@
       </div>
     </div>
   </nav>
+  <!-- MESSAGES -->
+  <div class="columns">
+    <div class="column"></div>
+    <div class="column">
+      {% if messages %}
+        {% for message in messages %}
+        <article class="message is-{{ message.tags }}">
+          <div class="message-body">
+            {{ message }}
+          </div>
+        </article>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="column"></div>
+  </div>
+
+    <!-- CONTENT -->
 
     {% block content %}
     {% endblock %}
+
+    <!-- FOOTER -->
 
     <footer class="footer">
         <div class="content has-text-centered">

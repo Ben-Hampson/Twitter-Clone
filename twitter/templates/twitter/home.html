@@ -18,12 +18,6 @@
         {% endif %}
 
         <!-- Tweet Stream -->
-        {% if messages %}
-            {% for message in messages %}
-                <div>{{ message }}</div>
-            {% endfor %}
-        {% endif %}
-        
         {% for tweet in tweets %}
             <article class="media">
                 <figure class="media-left">
