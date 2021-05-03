@@ -10,11 +10,11 @@
     <div class="column">
         <!-- Tweet Box -->
         {% if user.is_authenticated %}
-        <form method="POST">
-            {% csrf_token %}
-            {{ form.message|bulma }}
-            <button class="button is-info mb-4" type="submit"><strong>Tweet</strong></button>
-        </form>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.message }}
+                <button class="button is-info m-4" type="submit"><strong>Tweet</strong></button>
+            </form>
         {% endif %}
 
         <!-- Tweet Stream -->
@@ -30,7 +30,7 @@
                     <p>
                         <a href="{% url 'public-profile' tweet.author.username %}">
                         <strong>{{ tweet.author.profile.display_name }}</strong></a>
-                        <small>@{{ tweet.author.username }}</small> <small>{{ tweet.date_created }}</small>
+                        <small class="has-text-grey">@{{ tweet.author.username }}</small> <small class="has-text-grey">{{ tweet.date_created }}</small>
                     <br>
                         {{ tweet.message | hashtags | safe }}
                     </p>
