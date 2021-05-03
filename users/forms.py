@@ -21,3 +21,6 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['display_name', 'image', 'bio', 'location', 'website']
+        widgets = {
+            'image': forms.FileInput
+        }

@@ -7,7 +7,9 @@
     </div>
     <div class="column">
         <span class="is-size-3 has-text-weight-bold">Update Your Profile</span>
-        <p><img class="image is-64x64" src="{{ user.profile.image.url }}"></p>
+        <p class="image is-64x64">
+            <img class="image is-64x64 is-rounded" src="{{ user.profile.image.url }}">
+        </p>
                 
         <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -16,7 +18,7 @@
                 {{ p_form | bulma }}
             </fieldset>
             <div class="form-group mt-3">
-                <button class="button is-primary" type="submit">Update</button>
+                <button class="button is-primary" type="submit"><strong>Update</strong></button>
             </div>
         </form>
     </div>
