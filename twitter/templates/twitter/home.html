@@ -50,7 +50,9 @@
                 </nav>
                 </div>
                 <div class="media-right">
-                <button class="delete"></button>
+                {% if tweet.author.id == user.id %}
+                    <a href="{% url 'tweet-delete' tweet.id %}"><button class="delete"></button></a>
+                {% endif %}
                 </div>
             </article>
         {% endfor %}

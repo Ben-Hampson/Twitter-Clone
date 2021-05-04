@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, DeleteView
 from .models import Tweet
 from .forms import TweetForm
+from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
 class TweetListView(ListView):
@@ -27,6 +29,24 @@ class TweetListView(ListView):
 class TweetDetailView(DetailView):
     model = Tweet
     context_object_name = 'tweet'
+
+class TweetDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Tweet
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        tweet = self.get_object()
+        if self.request.user == tweet.author:
+            return True
+        return False
+
+    def delete(self, request, *args, **kwargs):
+        messages.add_message(request, messages.SUCCESS, 'Tweet deleted.')
+        return super().delete(request, *args, **kwargs)
 
 class UserTweetListView(ListView):
     model = Tweet
