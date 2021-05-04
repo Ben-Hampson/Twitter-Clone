@@ -7,15 +7,24 @@
 <div class="columns">
     <div class="column">
     </div>
-    <div class="column">
-        <!-- Tweet Stream -->
-        {% if messages %}
-            {% for message in messages %}
-                <div>{{ message }}</div>
-            {% endfor %}
+    <div class="column">        
+        <span class="is-size-3 has-text-weight-bold">{{ author.profile.display_name }}</span> @{{ author.username }}<br>
+
+        <!-- FOLLOWS AND FOLLOWERS -->
+        Follows: {{ author.profile.follows.count }}
+        Followers: {{ author.profile.followers.count }}
+
+        <!-- FOLLOW BUTTON -->
+        {% if user.is_authenticated and user != author %}
+            {% if author.profile not in user.profile.follows.all %}
+                <a href="{% url 'follow-user' author.id %}"><button class="button is-info is-small">Follow</button></a>
+            {% else %}
+                <a href="{% url 'unfollow-user' author.id %}"><button class="button is-info is-small">Unfollow</button></a>
+            {% endif %}
         {% endif %}
-        
-        <span class="is-size-3 has-text-weight-bold">{{ view.kwargs.username }}</span>
+
+
+        <!-- TWEETS -->
         {% for tweet in tweets %}
             <article class="media">
                 <figure class="media-left">

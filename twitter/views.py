@@ -48,10 +48,16 @@ class TweetDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         messages.add_message(request, messages.SUCCESS, 'Tweet deleted.')
         return super().delete(request, *args, **kwargs)
 
-class UserTweetListView(ListView):
+class UserTweetListView(ListView):  # Public Profile
     model = Tweet
     template_name = 'twitter/public_profile.html'
     context_object_name = 'tweets'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['author'] = get_object_or_404(User, username=self.kwargs.get('username'))
+        context['user'] = self.request.user
+        return context
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
