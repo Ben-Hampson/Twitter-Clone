@@ -27,42 +27,8 @@
             <a href="{% url 'private-profile' %}"><button class="button is-info is-small">Edit Profile</button></a>
         {% endif %}
         
-        <!-- TWEETS -->
-        {% for tweet in tweets %}
-            <article class="media">
-                <figure class="media-left">
-                <p class="image is-64x64">
-                    <img src="https://bulma.io/images/placeholders/128x128.png">
-                </p>
-                </figure>
-                <div class="media-content">
-                <div class="content">
-                    <p>
-                        <a href="{% url 'public-profile' tweet.author.username %}"><strong>{{ tweet.author.username }}</strong></a> 
-                        <small>@{{ tweet.author.username }}</small> <small>{{ tweet.date_created }}</small>
-                    <br>
-                       {{ tweet.message | hashtags | safe }}
-                    </p>
-                </div>
-                <nav class="level is-mobile">
-                    <div class="level-left">
-                    <a class="level-item">
-                        <span class="icon is-small"><i class="fas fa-reply"></i></span>
-                    </a>
-                    <a class="level-item">
-                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
-                    </a>
-                    <a class="level-item">
-                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
-                    </a>
-                    </div>
-                </nav>
-                </div>
-                <div class="media-right">
-                <button class="delete"></button>
-                </div>
-            </article>
-        {% endfor %}
+        <!-- TWEET STREAM -->
+        {% include "twitter/tweet_list.html" %}
         
     </div>
     <div class="column">

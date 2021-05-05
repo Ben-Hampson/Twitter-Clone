@@ -85,8 +85,13 @@ class UserTweetListView(ListView):  # Public Profile
 
 class HashtagListView(ListView):
     model = Tweet
-    template_name = 'twitter/public_profile.html'
+    template_name = 'twitter/hashtag.html'
     context_object_name = 'tweets'
 
     def get_queryset(self):
         return get_list_or_404(Tweet, message__icontains=f"#{self.kwargs.get('hashtag')}")
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['hashtag'] = self.kwargs.get('hashtag')
+        return context
