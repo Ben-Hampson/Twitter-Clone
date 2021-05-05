@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404
 from django.http import HttpResponse
+from django.urls import reverse
 from django.views.generic import ListView, DetailView, DeleteView
 from .models import Tweet
 from .forms import TweetForm
@@ -28,13 +29,14 @@ class TweetListView(ListView):  # Homepage
         return redirect('home')
 
     def get_queryset(self):
-        if self.request.user.is_authenticated:
+        """If auth'd, only show tweets from authors the user follows.
+        If not auth'd or a user has gone to 'explore', show all tweets."""
+        if self.request.user.is_authenticated and self.request.path_info != reverse('all-tweets'):
+            print(self.request.path_info)
             followees = self.request.user.profile.follows.all()
-            print(followees)
             q_followees = Q(author__in=followees)
             q_user = Q(author=self.request.user)
             queryset = Tweet.objects.filter(q_followees | q_user).all()
-            print(queryset)
         else:
             queryset = super().get_queryset()
         return queryset
