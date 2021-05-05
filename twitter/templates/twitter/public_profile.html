@@ -22,8 +22,11 @@
                 <a href="{% url 'unfollow-user' author.username %}"><button class="button is-info is-small">Unfollow</button></a>
             {% endif %}
         {% endif %}
-
-
+        
+        {% if user.is_authenticated and user == author %}
+            <a href="{% url 'private-profile' %}"><button class="button is-info is-small">Edit Profile</button></a>
+        {% endif %}
+        
         <!-- TWEETS -->
         {% for tweet in tweets %}
             <article class="media">
