@@ -6,9 +6,10 @@ from .forms import TweetForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import Q
 
 # Create your views here.
-class TweetListView(ListView):
+class TweetListView(ListView):  # Homepage
     model = Tweet
     template_name = 'twitter/home.html'
     context_object_name = 'tweets'
@@ -30,7 +31,9 @@ class TweetListView(ListView):
         if self.request.user.is_authenticated:
             followees = self.request.user.profile.follows.all()
             print(followees)
-            queryset = Tweet.objects.filter(author__in=followees).all()
+            q_followees = Q(author__in=followees)
+            q_user = Q(author=self.request.user)
+            queryset = Tweet.objects.filter(q_followees | q_user).all()
             print(queryset)
         else:
             queryset = super().get_queryset()
