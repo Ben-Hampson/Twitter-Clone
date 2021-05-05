@@ -16,10 +16,10 @@
 
         <!-- FOLLOW BUTTON -->
         {% if user.is_authenticated and user != author %}
-            {% if author.profile not in user.profile.follows.all %}
-                <a href="{% url 'follow-user' author.id %}"><button class="button is-info is-small">Follow</button></a>
+            {% if author not in user.profile.follows.all %}
+                <a href="{% url 'follow-user' author.username %}"><button class="button is-info is-small">Follow</button></a>
             {% else %}
-                <a href="{% url 'unfollow-user' author.id %}"><button class="button is-info is-small">Unfollow</button></a>
+                <a href="{% url 'unfollow-user' author.username %}"><button class="button is-info is-small">Unfollow</button></a>
             {% endif %}
         {% endif %}
 

@@ -26,6 +26,16 @@ class TweetListView(ListView):
             form.save()
         return redirect('home')
 
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            followees = self.request.user.profile.follows.all()
+            print(followees)
+            queryset = Tweet.objects.filter(author__in=followees).all()
+            print(queryset)
+        else:
+            queryset = super().get_queryset()
+        return queryset
+
 class TweetDetailView(DetailView):
     model = Tweet
     context_object_name = 'tweet'

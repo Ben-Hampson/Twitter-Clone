@@ -32,8 +32,8 @@ urlpatterns = [
     path('<str:username>/', twitter_views.UserTweetListView.as_view(), name='public-profile'),
     path('hashtag/<str:hashtag>/', twitter_views.HashtagListView.as_view(), name='hashtag'),
     path('delete/<int:pk>/', twitter_views.TweetDeleteView.as_view(), name='tweet-delete'),
-    path('follow/<int:user_pk>/', user_views.follow_user, name='follow-user'),
-    path('unfollow/<int:user_pk>/', user_views.unfollow_user, name='unfollow-user'),
+    path('<str:username>/follow/', user_views.follow_user, name='follow-user'),
+    path('<str:username>/unfollow/', user_views.unfollow_user, name='unfollow-user'),
 ]
 
 if settings.DEBUG:

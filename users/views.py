@@ -41,12 +41,12 @@ def private_profile(request):
     }
 
 @login_required
-def follow_user(request, user_pk):
-    followee = get_object_or_404(User, id=user_pk)
+def follow_user(request, username):
+    followee = get_object_or_404(User, username=username)
 
-    if user_pk != request.user.id:  # Check they're not trying to follow themselves.
-        if followee.profile not in request.user.profile.follows.all():  # Check user is not already following the followee
-            request.user.profile.follows.add(followee.profile.id)  # Note requires the profile ID, not the user ID.
+    if followee != request.user:  # Check they're not trying to follow themselves.
+        if followee not in request.user.profile.follows.all():  # Check user is not already following the followee
+            request.user.profile.follows.add(followee.id)  # Note that it adds the author User id, not profile id
             messages.success(request, f'You are now following @{followee.username}.')
         else:
             messages.warning(request, f"You already follow @{followee.username}!")
@@ -56,12 +56,12 @@ def follow_user(request, user_pk):
     return redirect('public-profile', followee.username)
 
 @login_required
-def unfollow_user(request, user_pk):
-    followee = get_object_or_404(User, id=user_pk)
+def unfollow_user(request, username):
+    followee = get_object_or_404(User, username=username)
 
-    if user_pk != request.user.id:  # Check they're not trying to follow themselves.
-        if followee.profile in request.user.profile.follows.all():  # Check user is not already following the followee
-            request.user.profile.follows.remove(followee.profile.id)  # Note requires the profile ID, not the user ID.
+    if followee != request.user:  # Check they're not trying to follow themselves.
+        if followee in request.user.profile.follows.all():  # Check user is not already following the followee
+            request.user.profile.follows.remove(followee.id)  # Note that it adds the author User id, not profile id
             messages.success(request, f'You no longer follow @{followee.username}.')
         else:
             messages.warning(request, f"You already do not follow @{followee.username}!")
