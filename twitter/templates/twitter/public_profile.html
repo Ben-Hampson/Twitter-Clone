@@ -11,8 +11,8 @@
         <span class="is-size-3 has-text-weight-bold">{{ author.profile.display_name }}</span> @{{ author.username }}<br>
 
         <!-- FOLLOWS AND FOLLOWERS -->
-        Follows: {{ author.profile.follows.count }}
-        Followers: {{ author.profile.followers.count }}
+        Follows: {{ author_follows_count }}
+        Followers: {{ author_followers_count }}
 
         <!-- FOLLOW BUTTON -->
         {% if user.is_authenticated and user != author %}

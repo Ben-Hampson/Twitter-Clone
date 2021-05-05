@@ -68,8 +68,13 @@ class UserTweetListView(ListView):  # Public Profile
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['author'] = get_object_or_404(User, username=self.kwargs.get('username'))
-        context['user'] = self.request.user
+        user = self.request.user
+        author = get_object_or_404(User, username=self.kwargs.get('username'))
+
+        context['author'] = author
+        context['user'] = user
+        context['author_follows_count'] = author.profile.follows.count()
+        context['author_followers_count'] = User.objects.filter(followers__user=user).count()
         return context
 
     def get_queryset(self):
