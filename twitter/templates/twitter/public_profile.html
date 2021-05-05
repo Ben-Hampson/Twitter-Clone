@@ -7,25 +7,51 @@
 <div class="columns">
     <div class="column">
     </div>
-    <div class="column">        
-        <span class="is-size-3 has-text-weight-bold">{{ author.profile.display_name }}</span> @{{ author.username }}<br>
+    <div class="column is-5">        
+        <!-- PROFILE CARD -->
+        <div class="card mb-4">
+            <div class="card-content">
+                <figure class="image is-128x128">
+                    <img class="is-128x128 is-rounded" src="{{ author.profile.image.url }}">
+                </figure>
+                <div class="level">
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p class="title">{{ author.profile.display_name }}</p>
+                        </div>
+                    </div>
+                    <div class="level-right">
+                        <!-- FOLLOW BUTTON -->
+                        <div class="level-item">
+                            {% if user.is_authenticated and user != author %}
+                                {% if author not in user.profile.follows.all %}
+                                    <a href="{% url 'follow-user' author.username %}"><button class="button is-info is-small">Follow</button></a>
+                                {% else %}
+                                    <a href="{% url 'unfollow-user' author.username %}"><button class="button is-info is-small">Unfollow</button></a>
+                                {% endif %}
+                            {% endif %}
+                            {% if user.is_authenticated and user == author %}
+                                <a href="{% url 'private-profile' %}"><button class="button is-info is-small">Edit Profile</button></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-2">@{{ author.username }}</p>
+                <p class="mt-2">{{ author.profile.bio }}</p>
+                <p class="mt-2">
+                    {% if author.profile.location %}
+                        <span class="icon"><i class="fas fa-map-marker-alt"></i></span>{{ author.profile.location }} 
+                    {% endif %}
+                    {% if author.profile.website %}
+                    <span class="icon ml-2"><i class="fas fa-link"></i></span>{{ author.profile.website | urlize }} 
+                    {% endif %}
+                    <span class="icon ml-2"><i class="fas fa-calendar-alt"></i></span>Joined {{ author.date_joined | date:"F Y" }}
+                </p>
+                <p class="mt-2"><strong>{{ author_follows_count }}</strong> Following   <strong>{{ author_followers_count }}</strong> Followers</p>
+            </div>
+        </div>
 
-        <!-- FOLLOWS AND FOLLOWERS -->
-        Follows: {{ author_follows_count }}
-        Followers: {{ author_followers_count }}
 
-        <!-- FOLLOW BUTTON -->
-        {% if user.is_authenticated and user != author %}
-            {% if author not in user.profile.follows.all %}
-                <a href="{% url 'follow-user' author.username %}"><button class="button is-info is-small">Follow</button></a>
-            {% else %}
-                <a href="{% url 'unfollow-user' author.username %}"><button class="button is-info is-small">Unfollow</button></a>
-            {% endif %}
-        {% endif %}
-        
-        {% if user.is_authenticated and user == author %}
-            <a href="{% url 'private-profile' %}"><button class="button is-info is-small">Edit Profile</button></a>
-        {% endif %}
         
         <!-- TWEET STREAM -->
         {% include "twitter/tweet_list.html" %}
