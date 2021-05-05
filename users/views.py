@@ -40,6 +40,8 @@ def private_profile(request):
         'p_form': p_form
     }
 
+    return render(request, 'users/private_profile.html', context)
+
 @login_required
 def follow_user(request, username):
     followee = get_object_or_404(User, username=username)
