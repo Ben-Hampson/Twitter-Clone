@@ -20,7 +20,6 @@ class TweetListView(ListView):  # Homepage
     def get(self, request, *args, **kwargs):
         follows = request.user.profile.follows.count()
         explore_url = reverse('all-tweets')
-        print(explore_url)
         if follows == 0:
             messages.add_message(request, messages.INFO, mark_safe(f"""Find some people to follow: <strong><a href="{explore_url}">Explore</a></strong>!"""))
         return super().get(request, *args, **kwargs)
