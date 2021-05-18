@@ -7,6 +7,7 @@ from .forms import TweetForm
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.utils.safestring import mark_safe
 from django.db.models import Q
 
 # Create your views here.
@@ -15,6 +16,14 @@ class TweetListView(ListView):  # Homepage
     template_name = 'twitter/home.html'
     context_object_name = 'tweets'
     ordering = '-date_created'
+
+    def get(self, request, *args, **kwargs):
+        follows = request.user.profile.follows.count()
+        explore_url = reverse('all-tweets')
+        print(explore_url)
+        if follows == 0:
+            messages.add_message(request, messages.INFO, mark_safe(f"""Find some people to follow: <strong><a href="{explore_url}">Explore</a></strong>!"""))
+        return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -25,13 +25,13 @@
                         <div class="level-item">
                             {% if user.is_authenticated and user != author %}
                                 {% if author not in user.profile.follows.all %}
-                                    <a href="{% url 'follow-user' author.username %}"><button class="button is-info is-small">Follow</button></a>
+                                    <a href="{% url 'follow-user' author.username %}"><button class="button is-info is-small"><strong>Follow</strong></button></a>
                                 {% else %}
-                                    <a href="{% url 'unfollow-user' author.username %}"><button class="button is-info is-small">Unfollow</button></a>
+                                    <a href="{% url 'unfollow-user' author.username %}"><button class="button is-info is-small"><strong>Unfollow</strong></button></a>
                                 {% endif %}
                             {% endif %}
                             {% if user.is_authenticated and user == author %}
-                                <a href="{% url 'private-profile' %}"><button class="button is-info is-small">Edit Profile</button></a>
+                                <a href="{% url 'private-profile' %}"><button class="button is-info is-small"><strong>Edit Profile</strong></button></a>
                             {% endif %}
                         </div>
                     </div>
