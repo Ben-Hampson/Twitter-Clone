@@ -1,7 +1,7 @@
 # Twitter Clone
 > A Twitter clone built using Django, with theming from [Bulma](https://bulma.io/).
 
-![Logo of the project](https://raw.githubusercontent.com/jehna/readme-best-practices/master/sample-logo.png)
+![Screenshot of Twitter Clone](https://github.com/Ben-Hampson/Twitter-Clone/blob/master/screenshot.png?raw=true)
 
 📍 [Demo on Heroku](https://django-twitter-clone.herokuapp.com/) \
 📃 [Article](http://www.benhampson.co.uk/projects/twitter-clone/)
