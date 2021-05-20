@@ -3,9 +3,10 @@
 
 ![Screenshot of Twitter Clone](https://github.com/Ben-Hampson/Twitter-Clone/blob/master/screenshot.png?raw=true)
 
-📍 [Demo on Heroku](https://django-twitter-clone.herokuapp.com/) \
-📃 [Article](http://www.benhampson.co.uk/projects/twitter-clone/)
+### 📍 [Demo on Heroku](https://django-twitter-clone.herokuapp.com/)
+### 📃 [Article](http://www.benhampson.co.uk/projects/twitter-clone/)
 
+\
 The goal was to create a simple version of Twitter and replicate some of its key features in order to expand my understanding of Django.
 
 ## Twitter Features
