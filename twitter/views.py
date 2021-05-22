@@ -18,6 +18,10 @@ class TweetListView(ListView):  # Homepage
     ordering = '-date_created'
 
     def get(self, request, *args, **kwargs):
+        """ If logged in but doesn't follow anyone, suggest 'Explore' """
+        if not request.user.is_authenticated:
+            return super().get(request, *args, **kwargs)
+        
         follows = request.user.profile.follows.count()
         explore_url = reverse('all-tweets')
         if follows == 0:
