@@ -34,7 +34,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'django-twitter-clone.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'django_cleanup',
+    # 'django_cleanup',
     'users.apps.UsersConfig',
     'twitter.apps.TwitterConfig',
     'bulma',
