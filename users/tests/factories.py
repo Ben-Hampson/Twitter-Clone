@@ -15,5 +15,5 @@ class ProfileFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Profile
 
-    user = factory.SubFactory(UserFactory)
+    user = factory.SubFactory(UserFactory, username='profile_user')
     display_name = 'test_profile'
