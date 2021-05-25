@@ -10,6 +10,7 @@ class TestProfile:
         # profile = profile_factory.build()
         
         # profile.follows.set(user)
+        print(profile.user)
         
         assert profile.display_name == 'test_profile'
 
