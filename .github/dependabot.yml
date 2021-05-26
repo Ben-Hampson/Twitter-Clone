@@ -1,5 +1,4 @@
 version: 2
-on: push
 updates:
   # Enable version updates for pip (Python)
   - package-ecosystem: "pip"
