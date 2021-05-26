@@ -15,16 +15,42 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Profile',
+            name="Profile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('display_name', models.CharField(max_length=40)),
-                ('image', models.ImageField(blank=True, default='default.jpg', upload_to='profile_pics')),
-                ('bio', models.CharField(blank=True, max_length=280)),
-                ('location', models.CharField(blank=True, max_length=140)),
-                ('website', models.CharField(blank=True, max_length=280)),
-                ('follows', models.ManyToManyField(blank=True, related_name='followers', to=settings.AUTH_USER_MODEL)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("display_name", models.CharField(max_length=40)),
+                (
+                    "image",
+                    models.ImageField(
+                        blank=True, default="default.jpg", upload_to="profile_pics"
+                    ),
+                ),
+                ("bio", models.CharField(blank=True, max_length=280)),
+                ("location", models.CharField(blank=True, max_length=140)),
+                ("website", models.CharField(blank=True, max_length=280)),
+                (
+                    "follows",
+                    models.ManyToManyField(
+                        blank=True,
+                        related_name="followers",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "user",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

@@ -4,6 +4,7 @@ import re
 
 register = template.Library()
 
+
 @register.filter
 @stringfilter
 def hashtags(value):
