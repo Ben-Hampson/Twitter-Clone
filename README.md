@@ -3,8 +3,12 @@
 
 ![Screenshot of Twitter Clone](https://github.com/Ben-Hampson/Twitter-Clone/blob/master/screenshot.png?raw=true)
 
-### 📍 [Demo on Heroku](https://django-twitter-clone.herokuapp.com/)
-### 📃 [Article](http://www.benhampson.co.uk/projects/twitter-clone/)
+[![CodeFactor](https://www.codefactor.io/repository/github/ben-hampson/twitter-clone/badge/master)](https://www.codefactor.io/repository/github/ben-hampson/twitter-clone/overview/master) 
+[![codecov](https://codecov.io/gh/Ben-Hampson/Twitter-Clone/branch/master/graph/badge.svg?token=H0DQ52Q4WQ)](https://codecov.io/gh/Ben-Hampson/Twitter-Clone)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+### 📍 [**Demo on Heroku**](https://django-twitter-clone.herokuapp.com/)
+### 📃 [**Article**](http://www.benhampson.co.uk/projects/twitter-clone/)
 
 \
 The goal was to create a simple version of Twitter and replicate some of its key features in order to expand my understanding of Django.
