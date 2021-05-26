@@ -35,6 +35,6 @@ Add:
 - Enhanced Tweets
     - URLS + Cards
     - Images
-    - Linked mentions → [@BHampson](https://twitter.com/BHampson))
+    - Linked mentions → [@BHampson](https://twitter.com/BHampson)
 - Lists
 - Search
