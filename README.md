@@ -3,6 +3,7 @@
 
 ![Screenshot of Twitter Clone](https://github.com/Ben-Hampson/Twitter-Clone/blob/master/screenshot.png?raw=true)
 
+[![Tests](https://github.com/Ben-Hampson/Twitter-Clone/actions/workflows/tests.yml/badge.svg)](https://github.com/Ben-Hampson/Twitter-Clone/actions/workflows/tests.yml)
 [![CodeFactor](https://www.codefactor.io/repository/github/ben-hampson/twitter-clone/badge/master)](https://www.codefactor.io/repository/github/ben-hampson/twitter-clone/overview/master) 
 [![codecov](https://codecov.io/gh/Ben-Hampson/Twitter-Clone/branch/master/graph/badge.svg?token=H0DQ52Q4WQ)](https://codecov.io/gh/Ben-Hampson/Twitter-Clone)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
