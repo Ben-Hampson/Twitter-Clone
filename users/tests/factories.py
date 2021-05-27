@@ -11,6 +11,7 @@ class UserFactory(factory.django.DjangoModelFactory):
         model = User
 
     username = "test_user"
+    password = "askdl;fa"
 
 
 class ProfileFactory(factory.django.DjangoModelFactory):

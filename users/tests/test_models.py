@@ -12,6 +12,7 @@ class TestProfile:
 
     @pytest.mark.django_db
     def test_Profile_str(self, profile_factory):
+        """Test that the string representation of a Profile is the User username."""
         assert profile_factory().__str__() == "profile_user Profile"
 
     @pytest.mark.django_db

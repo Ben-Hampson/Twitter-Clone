@@ -9,7 +9,12 @@ register(UserFactory)
 
 @pytest.fixture
 def user1(db, user_factory):
-    user1 = user_factory.create(username="test_user1")
+    user1 = user_factory.create(
+        username="test_user1",
+        email="username123@example.com",
+        # password1="testtest",
+        # password2="testtest"
+    )
     return user1
 
 
