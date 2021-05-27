@@ -1,7 +1,7 @@
 import pytest
 
 from pytest_factoryboy import register
-from users.tests.factories import ProfileFactory, UserFactory
+from .factories import ProfileFactory, UserFactory
 
 register(ProfileFactory)  # access fixture as profile_factory
 register(UserFactory)
