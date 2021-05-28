@@ -10,8 +10,8 @@ on:
     branches: [ master ]
 
 env:
-  SECRET_KEY: cu_jpk8hpzci&et3rfn1n14*z@ur=o9v-m#%g^ex!iiftfvh0m  # Dummy key
-  DEBUG: True
+  SECRET_KEY: cu_jpk8hpzci&et3rfn1n14*z@ur=o9v-m#%g^ex!iiftfvh0m  # Dummy key. Used here so that dependabot PRs
+  DEBUG: True                                                     # can be tested with GitHub Actions.
 
 jobs:
   build:
