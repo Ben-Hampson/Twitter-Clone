@@ -2,8 +2,8 @@ appdirs==1.4.4
 asgiref==3.3.4
 attrs==21.2.0
 black==21.5b1
-boto3==1.17.81
-botocore==1.20.81
+boto3==1.17.83
+botocore==1.20.83
 click==8.0.1
 coverage==5.5
 distlib==0.3.1
@@ -14,7 +14,7 @@ django-cleanup==5.2.0
 django-on-heroku==1.1.2
 django-storages==1.11.1
 factory-boy==3.2.0
-Faker==8.2.1
+Faker==8.4.0
 filelock==3.0.12
 gunicorn==20.1.0
 inflection==0.5.1
@@ -42,6 +42,6 @@ sqlparse==0.4.1
 text-unidecode==1.3
 toml==0.10.2
 tox==3.23.1
-urllib3==1.26.4
+urllib3==1.26.5
 virtualenv==20.4.7
 whitenoise==5.2.0
