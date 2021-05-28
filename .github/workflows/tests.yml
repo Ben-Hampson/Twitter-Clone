@@ -10,7 +10,7 @@ on:
     branches: [ master ]
 
 env:
-  SECRET_KEY: ${{secrets.SECRET_KEY}}
+  SECRET_KEY: cu_jpk8hpzci&et3rfn1n14*z@ur=o9v-m#%g^ex!iiftfvh0m  # Dummy key
   DEBUG: True
 
 jobs:
