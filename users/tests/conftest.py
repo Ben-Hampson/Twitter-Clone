@@ -29,9 +29,10 @@ def profile(db, profile_factory):
     profile = profile_factory.create()
     return profile
 
+
 @pytest.fixture
 def profile2(db, profile_factory):
     profile = profile_factory.create(
-        user = factory.SubFactory(UserFactory, username="profile_user2")
+        user=factory.SubFactory(UserFactory, username="profile_user2")
     )
     return profile
