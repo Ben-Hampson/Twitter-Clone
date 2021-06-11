@@ -38,7 +38,7 @@ Add:
     - Replies
     - Retweets
 - Enhanced Tweets
-    - URLS + Cards
+    - URLs + Cards
     - Images
     - Linked mentions → [@BHampson](https://twitter.com/BHampson)
 - Lists
